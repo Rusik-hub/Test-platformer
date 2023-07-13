@@ -3,10 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+[RequireComponent(typeof(Animator))]
+
 public class SceneTransition : MonoBehaviour
 {
-    public TMP_Text LoadingPercentage;
-    public Image LoadingProgressBar;
+    [SerializeField] private TMP_Text LoadingPercentage;
+    [SerializeField] private Image LoadingProgressBar;
 
     private static SceneTransition _instance;
     private static bool _isPlayOpeningAnimation = false;
@@ -17,7 +19,7 @@ public class SceneTransition : MonoBehaviour
     public static void SwitchToScene(string sceneName)
     {
         _instance._componentAnimator.SetTrigger("sceneClosing");
-        //SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
 
         _instance._loadingSceneOperation = SceneManager.LoadSceneAsync(sceneName);
         _instance._loadingSceneOperation.allowSceneActivation = false;

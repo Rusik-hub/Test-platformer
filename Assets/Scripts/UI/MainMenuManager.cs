@@ -15,8 +15,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        //SceneTransition.SwitchToScene("SampleScene");
-        SceneManager.LoadScene("SampleScene");
+        SceneTransition.SwitchToScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
     }
 
     public void ExitGame()

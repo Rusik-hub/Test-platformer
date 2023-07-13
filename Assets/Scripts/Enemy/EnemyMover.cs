@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private Transform _path;
 
     private Transform[] _pathPoints;
-    private float _moveSpeed = 0.001f;
+    private float _moveSpeed = 1f;
     private int _currentPoint;
 
     private void Start()
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         Transform target = _pathPoints[_currentPoint];
 
-        transform.position = Vector2.MoveTowards(transform.position, target.position, _moveSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, target.position, _moveSpeed * Time.deltaTime);
 
         if (transform.position == target.position)
         {

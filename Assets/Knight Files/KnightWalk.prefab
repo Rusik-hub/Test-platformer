@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2181751743933949448}
   - component: {fileID: 2181751743933949457}
   m_Layer: 0
-  m_Name: Knight_idle_01
+  m_Name: KnightWalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

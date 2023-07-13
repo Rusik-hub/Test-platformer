@@ -5,7 +5,8 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private List<AudioSource> _gameSounds;
-    [SerializeField] private List<AudioSource> _gameMusic;
+    [SerializeField] private AudioSource _backgroundMusic;
+    [SerializeField] private Player _player;
 
     private float _soundVolume;
     private float _musicVolume;
@@ -20,9 +21,23 @@ public class SoundManager : MonoBehaviour
             _gameSounds[i].volume = _soundVolume;
         }
 
-        for (int i = 0; i < _gameMusic.Count; i++)
-        {
-            _gameMusic[i].volume = _musicVolume;
-        }
+        _backgroundMusic.volume = _musicVolume;
+
+        _backgroundMusic.Play();
+    }
+
+    private void OnEnable()
+    {
+        _player.PlayerDied += StopMusic;
+    }
+
+    private void OnDisable()
+    {
+        _player.PlayerDied -= StopMusic;
+    }
+
+    private void StopMusic()
+    {
+        _backgroundMusic.Stop();
     }
 }
