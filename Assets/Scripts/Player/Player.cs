@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("You died");
         Time.timeScale = 0f;
         _deathSound.Play();
     }

@@ -16,13 +16,7 @@ public class SoundManager : MonoBehaviour
         _soundVolume = DataHolder.SoundVolume;
         _musicVolume = DataHolder.MusicVolume;
 
-        for (int i = 0; i < _gameSounds.Count; i++)
-        {
-            _gameSounds[i].volume = _soundVolume;
-        }
-
-        _backgroundMusic.volume = _musicVolume;
-
+        UpdateSoundSettings();
         _backgroundMusic.Play();
     }
 
@@ -39,5 +33,15 @@ public class SoundManager : MonoBehaviour
     private void StopMusic()
     {
         _backgroundMusic.Stop();
+    }
+
+    private void UpdateSoundSettings()
+    {
+        for (int i = 0; i < _gameSounds.Count; i++)
+        {
+            _gameSounds[i].volume = _soundVolume;
+        }
+
+        _backgroundMusic.volume = _musicVolume;
     }
 }
