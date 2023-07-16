@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] private UnityEvent _coinCollected;
-    [SerializeField] private UnityEvent _playerDied;
+    [SerializeField] private UnityEvent _died;
     [SerializeField] private AudioSource _collectCoinSound;
     [SerializeField] private AudioSource _deathSound;
 
@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
 
     public event UnityAction PlayerDied
     {
-        add => _playerDied.AddListener(value);
-        remove => _playerDied.RemoveListener(value);
+        add => _died.AddListener(value);
+        remove => _died.RemoveListener(value);
     }
 
     private void CollectCoin()
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         if (collision.TryGetComponent<Enemy>(out Enemy enemy))
         {
             Die();
-            _playerDied?.Invoke();
+            _died?.Invoke();
         }
     }
 

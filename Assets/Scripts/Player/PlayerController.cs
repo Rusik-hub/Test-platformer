@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
 
+    private const string Walk = "Walk";
+
     private float _speed = 5f;
     private Rigidbody2D _rb2d;
 
-    private void OnEnable()
+    private void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
     }
@@ -25,14 +27,14 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                GetComponent<SpriteRenderer>().flipX = true;
-                _animator.SetTrigger("Walk");
+                _animator.SetTrigger(Walk);
+                GetComponent<Transform>().rotation = Quaternion.Euler(0, -180, 0);
             }
 
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                GetComponent<SpriteRenderer>().flipX = false;
-                _animator.SetTrigger("Walk");
+                _animator.SetTrigger(Walk);
+                GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
             }
         }
     }
