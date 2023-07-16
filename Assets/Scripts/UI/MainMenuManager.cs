@@ -7,15 +7,8 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Slider _sound;
     [SerializeField] private Slider _music;
 
-    private void Start()
-    {
-        _sound.value = DataHolder.SoundVolume;
-        _music.value = DataHolder.MusicVolume;
-    }
-
     public void PlayGame()
     {
-        //SceneTransition.SwitchToScene("SampleScene");
         SceneManager.LoadScene(1);
     }
 
@@ -33,5 +26,11 @@ public class MainMenuManager : MonoBehaviour
     public void MoveMusicVolume(float volume)
     {
         DataHolder.MusicVolume = volume;
+    }
+
+    private void Start()
+    {
+        _sound.value = DataHolder.SoundVolume;
+        _music.value = DataHolder.MusicVolume;
     }
 }

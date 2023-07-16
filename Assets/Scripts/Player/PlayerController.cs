@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         float horizontalMove = Input.GetAxis("Horizontal");
-
         _rb2d.velocity = new Vector2(horizontalMove * _speed, _rb2d.velocity.y);
 
         if (Time.timeScale != 0)
